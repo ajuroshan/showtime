@@ -5,7 +5,9 @@ class Show(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     poster = models.ImageField(upload_to='posters/')
+    trailer_url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
+    cast = models.ManyToManyField('Cast', related_name='shows')
 
     def __str__(self):
         return self.title
@@ -28,3 +30,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.user.username} on {self.episode.title} at {self.created_at}"
+
+
+class Cast(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='cast/')
+    role = models.CharField(max_length=255)
+    description = models.TextField()
+
+    def __str__(self):
+        return f"{self.name}"
