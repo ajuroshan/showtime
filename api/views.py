@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets
 from .models import Show, Episode, Comment, Cast
 from .serializers import ShowSerializer, EpisodeSerializer, CommentSerializer, CastSerializer

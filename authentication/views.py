@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 @csrf_exempt
-
 @api_view(['POST'])
 def login_view(request):
     username = request.data.get('username')
@@ -30,6 +29,7 @@ def login_view(request):
         }, status=status.HTTP_200_OK)
     else:
         return Response({"error": "Invalid Username or password"}, status=status.HTTP_400_BAD_REQUEST)
+
 @csrf_exempt
 @api_view(['POST'])
 def signup_view(request):
@@ -43,6 +43,7 @@ def signup_view(request):
     user.save()
 
     return Response({"message": "Signup successful."}, status=status.HTTP_201_CREATED)
+
 @csrf_exempt
 @api_view(['POST'])
 def logout_view(request):
