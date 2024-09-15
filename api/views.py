@@ -21,7 +21,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         # Set the user to the logged-in user
-        serializer.save()
+        serializer.save(user=self.request.user)
 
 
 class ShowSearchView(generics.ListAPIView):
