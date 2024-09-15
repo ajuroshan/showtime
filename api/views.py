@@ -17,7 +17,7 @@ class EpisodeViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    # permission_classes = [IsAuthenticated]  # Ensure only authenticated users can comment
+    permission_classes = [IsAuthenticated]  # Ensure only authenticated users can comment
 
     def perform_create(self, serializer):
         # Set the user to the logged-in user
